@@ -64,4 +64,4 @@ def detect(data):
           
 # Notice how socketio.run takes care of app instantiation as well.
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5050)
+    socketio.run(app, host='0.0.0.0')
