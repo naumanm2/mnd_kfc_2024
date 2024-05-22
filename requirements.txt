@@ -54,7 +54,6 @@ nbconvert==7.16.4
 nbformat==5.10.4
 numpy==1.26.4
 opencv-contrib-python==4.9.0.80
-opencv-python==4.9.0.80
 opencv-python-headless==4.9.0.80
 opt-einsum==3.3.0
 packaging==24.0
