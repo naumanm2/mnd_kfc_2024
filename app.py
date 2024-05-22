@@ -13,20 +13,16 @@ from flask_socketio import SocketIO, emit
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+# Creating a flask app and using it to instantiate a socket object
 
 detector = HandDetector(staticMode=False, maxHands=1, modelComplexity=1, detectionCon=0.5, minTrackCon=0.5)
-cap = cv2.VideoCapture(1) 
+cap = cv2.VideoCapture(0) 
 
 # Handler for default flask route
 # Using jinja template to render html along with slider value as input
 @app.route('/')
 def index():
     return render_template('index.html')
-
-# Handler for a message recieved over 'connect' channel
-@socketio.on('connect')
-def test_connect():
-    emit('after connect',  {'data':'Lets dance'})
     
 @socketio.on('image')
 def detect(data):
@@ -57,8 +53,6 @@ def detect(data):
                 emit('positive', {'result': True})
     else:
       emit('negative', {'result': False}) 
-    
-    
     
     
           

@@ -1,1 +1,1 @@
-web: gunicorn --worker-class eventlet -w 1 app:app
+gunicorn --worker-class eventlet -w 1 app:app --reload --bind 0.0.0.0:8080 --log-level debug
