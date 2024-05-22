@@ -54,6 +54,8 @@ def detect(data):
       emit('negative', {'result': False}) 
     
     
+    
+
           
 # Notice how socketio.run takes care of app instantiation as well.
 if __name__ == '__main__':
