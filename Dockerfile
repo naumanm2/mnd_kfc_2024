@@ -17,4 +17,4 @@ RUN pip install -r /deploy/requirements.txt
 WORKDIR /deploy
 
 EXPOSE 8000
-CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
+CMD ["gunicorn"  , "--bind", "--workers", "2", "--worker-connections", "1000", "0.0.0.0:8000", "app:app"]

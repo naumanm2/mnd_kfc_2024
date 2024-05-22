@@ -13,10 +13,6 @@ from flask_socketio import SocketIO, emit
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-print("running")
-
-# Creating a flask app and using it to instantiate a socket object
-
 detector = HandDetector(staticMode=False, maxHands=1, modelComplexity=1, detectionCon=0.5, minTrackCon=0.5)
 
 # Handler for default flask route
@@ -54,8 +50,6 @@ def detect(data):
                 emit('positive', {'result': True})
     else:
       emit('negative', {'result': False}) 
-    
-    
     
 
           
