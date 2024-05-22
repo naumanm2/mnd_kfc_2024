@@ -12,7 +12,7 @@ RUN apt-get install -y python python-pip python-virtualenv gunicorn libgl1
 
 # Setup flask application
 RUN mkdir -p /deploy/app
-COPY app /deploy/app
+COPY . /deploy/app
 RUN pip install -r /deploy/app/requirements.txt
 WORKDIR /deploy/app
 
