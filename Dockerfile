@@ -1,19 +1,20 @@
 FROM python:3.9
 
-WORKDIR /app
+# RUN apt update; apt install -y libgl1
+
+RUN apt-get update
+RUN apt-get install -y python python-pip python-virtualenv gunicorn libgl1
 
 # Install python dependencies
-ADD requirements.txt /app
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+# ADD requirements.txt /app
+# RUN pip3 install --upgrade pip
+# RUN pip3 install -r requirements.txt
 
-RUN apt update; apt install -y libgl1
-
-# Copy sources
-# ADD . /app
-
-COPY . /app
+# Setup flask application
+RUN mkdir -p /deploy/app
+COPY app /deploy/app
+RUN pip install -r /deploy/app/requirements.txt
+WORKDIR /deploy/app
 
 EXPOSE 8000
-ENTRYPOINT ["python", "app.py"]
-CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
+CMD ["/usr/bin/gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
