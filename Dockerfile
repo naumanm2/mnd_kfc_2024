@@ -14,7 +14,7 @@ RUN apt update; apt install -y libgl1
 RUN mkdir -p /deploy
 COPY . /deploy
 RUN pip install -r /deploy/requirements.txt
-WORKDIR /deploy/app
+WORKDIR /deploy
 
 EXPOSE 8000
 CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
