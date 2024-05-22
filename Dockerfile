@@ -12,6 +12,5 @@ RUN apt update; apt install -y libgl1
 # Copy sources
 ADD . /app
 
-# Run detection
-CMD ["app.py" ]
-ENTRYPOINT ["python3"]
+EXPOSE 8000
+CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
